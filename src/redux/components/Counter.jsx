@@ -1,26 +1,15 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "./redux/slice";
+import { minus, plus } from "./redux/slice";
 
 const Counter = () => {
-  const list = useSelector((state) => state.location);
-  const [value, setValue] = useState()
+  const counter = useSelector((state) => state.value);
   const dispatch = useDispatch();
-
   return (
     <div>
-      <div>
-        {list.map((value, index) => (
-          <h1 key={index}>{value}</h1>
-        ))}
-      </div>
-      <input
-        onClick={(e) => setValue(e.target.value)}
-        type="text"
-        placeholder="Country"
-      />
-      <button onClick={() => dispatch(add(value))}>add</button>
+      <h1>Counter {counter}</h1>
+      <button onClick={() => dispatch(plus(10))}>plus</button>
+      <button onClick={() => dispatch(minus(10))}>minus</button>
     </div>
   );
 };

@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const slice = createSlice({
-  name: "countries",
-  initialState: {
-    location: ["Uzbekistan", "Kazakhstan", "Russia"],
-  },
+  name: "counter",
+  initialState: { value: 0 },
   reducers: {
-    add: (state, action) => {
-      state.location = [...state.location, action.payload];
+    plus: (state, action) => {
+      state.value += action.payload;
+    },
+    minus: (state, action) => {
+      state.value -= action.payload;
     },
   },
 });
 
-export const { add } = slice.actions;
+export const { plus, minus } = slice.actions;
 export default slice.reducer;
